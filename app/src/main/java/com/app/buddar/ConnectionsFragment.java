@@ -4,18 +4,24 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.app.buddar.adapters.ConnectionsVerticalAdapter;
+import com.app.buddar.objects.Connection;
+
+import java.util.ArrayList;
+
 /**
- * Perfil Fragment
- * Created by Luis F. Alvarez
  */
 public class ConnectionsFragment extends Fragment implements View.OnClickListener {
     /**
      * Perfil Fragment Constructor
      */
+    private RecyclerView recylerConnections;
     public ConnectionsFragment() {
     }
 
@@ -43,6 +49,16 @@ public class ConnectionsFragment extends Fragment implements View.OnClickListene
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        recylerConnections = (RecyclerView) view.findViewById(R.id.recyclerConnections);
+        //info button
+        recylerConnections.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        ArrayList<Connection> connections = new ArrayList<Connection>();
+        for(int i = 0 ;i < 20; i++){
+            connections.add(new Connection("Connection " + ((int)i + 1)));
+        }
+        ConnectionsVerticalAdapter adapt = new ConnectionsVerticalAdapter(connections);
+        recylerConnections.setNestedScrollingEnabled(false);
+        recylerConnections.setAdapter(adapt);
     }
 
     /**

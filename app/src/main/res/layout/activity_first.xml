@@ -29,7 +29,7 @@
             android:gravity="right"
             android:textColor="#000000"
             android:fontFamily="@font/ralewaysemibold"
-            android:text="Iniciar sesión"
+            android:text="Log in"
             android:textSize="20dp" />
 
 

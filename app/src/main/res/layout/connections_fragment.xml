@@ -9,13 +9,11 @@
     android:orientation="vertical"
     tools:context=".ProfileFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -29,6 +27,12 @@
                 android:textSize="30dp"
                 android:textStyle="bold" />
         </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerConnections"
+        android:layout_width="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:overScrollMode="never"
+        android:layout_height="match_parent"/>
 
-    </ScrollView>
 </LinearLayout>

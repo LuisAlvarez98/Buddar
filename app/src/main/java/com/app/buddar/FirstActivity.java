@@ -39,7 +39,7 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
     private String token;
     public static SharedPreferences pref;
 
-    private TextView forgotPassword;
+    private TextView registerButton;
     //Progress
     ProgressBar progressLogin;
 
@@ -68,6 +68,9 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(this);
 
+        registerButton = (TextView) findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(this);
+
         progressLogin = (ProgressBar) findViewById(R.id.progressLogin);
         progressLogin.setVisibility(View.GONE);
 
@@ -86,6 +89,10 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.registerButton:
+                Intent reg = new Intent(FirstActivity.this, RegisterActivity.class);
+                startActivity(reg);
+                break;
             //Login user
             case R.id.loginButton:
                 Intent in = new Intent(FirstActivity.this, DashboardActivity.class);

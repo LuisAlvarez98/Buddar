@@ -57,7 +57,7 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
         //info button
         recyclerHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         ArrayList<History> histories = new ArrayList<History>();
-        for(int i = 0 ;i < 20; i++){
+        for(int i = 0 ;i < 5; i++){
             histories.add(new History("History " + ((int)i + 1)));
         }
         HistoryVerticalAdapter adapt = new HistoryVerticalAdapter(histories);

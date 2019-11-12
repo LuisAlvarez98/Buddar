@@ -9,13 +9,13 @@
     android:gravity="center"
     tools:context=".FirstActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Buddar"
-        android:textSize="42dp" />
+        android:src="@drawable/logo"
+      />
     <LinearLayout
         android:layout_width="314dp"
         android:layout_height="33dp"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:gravity="left"
-            android:text="Correo Electrónico"
+            android:text="Email"
             android:textColor="@color/colorPrimary" />
         <EditText
             android:id="@+id/emailInput"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="10"
-            android:hint="Correo electronico"
+            android:hint="Email"
             android:inputType="textEmailAddress"
             android:textSize="20sp" />
         <TextView
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:gravity="left"
-            android:text="Contraseña"
+            android:text="Password"
             android:textColor="@color/colorPrimary" />
         <EditText
             android:id="@+id/passwordInput"
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="10"
-            android:hint="Contraseña"
+            android:hint="Password"
             android:inputType="textPassword"
             android:textSize="20sp"
             android:layout_marginBottom="10dp"/>

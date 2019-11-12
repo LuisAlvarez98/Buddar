@@ -8,7 +8,16 @@
     android:layout_marginTop="15dp"
     android:orientation="vertical"
     tools:context=".ProfileFragment">
-
+    <LinearLayout
+        android:id="@+id/loaderContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -1,6 +1,7 @@
 package com.app.buddar;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 /**
  * Dashboard Fragment - Displays categories
@@ -18,6 +20,7 @@ import android.widget.ImageButton;
 public class DashboardFragment extends Fragment implements View.OnClickListener {
     ImageButton misProductos, eventosEnCurso, solicitudesDeEventos, historialDeEventos, miPerfil;
     ProfileFragment profileFragment;
+    private LinearLayout loaderContainer;
 
     private Button addProducts;
     /**
@@ -53,6 +56,14 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         //open dialog new event
         //showPopup(view);
         profileFragment = new ProfileFragment();
+        loaderContainer = (LinearLayout)view.findViewById(R.id.loaderContainer);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loaderContainer.setVisibility(View.GONE);
+            }
+        }, 1000);
     }
 
 

@@ -1,18 +1,21 @@
 package com.app.buddar;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 /**
  * Perfil Fragment
  * Created by Luis F. Alvarez
  */
 public class HelpFragment extends Fragment implements View.OnClickListener {
+    private LinearLayout loaderContainer;
     /**
      * Perfil Fragment Constructor
      */
@@ -43,6 +46,15 @@ public class HelpFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        loaderContainer = (LinearLayout)view.findViewById(R.id.loaderContainer);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loaderContainer.setVisibility(View.GONE);
+            }
+        }, 1000);
     }
 
     /**

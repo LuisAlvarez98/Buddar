@@ -50,11 +50,7 @@ public class HistoryVerticalAdapter extends RecyclerView.Adapter<HistoryVertical
     @Override
     public void onBindViewHolder(@NonNull final HistoryVerticalAdapter.ViewHolderDatos holder, final int position) {
         holder.name.setText(listDatos.get(position).getName());
-        Picasso.get()
-                .load("https://www.codigounico.com/wp-content/uploads/sites/2/2017/07/john-collison-el-joven-mas-rico-del-mundo-e1499777531285-759x500.jpg")
-                .resize(50, 50)
-                .centerCrop()
-                .into(holder.profileImage);
+        Picasso.get().load("https://scontent.fntr6-1.fna.fbcdn.net/v/t1.0-9/57738860_2189787707771861_2357075513719128064_n.jpg?_nc_cat=108&_nc_oc=AQkR0FD2ezHKLqilzxbqqTf3eXHYpCDCupqHbq-2uEivl5Fne-blS9-ngdYJKIhsFt8&_nc_ht=scontent.fntr6-1.fna&oh=ee0518b253fc53a1bd863c6079fee62f&oe=5E4F1BD5").into(holder.profileImage);
     }
 
     /**
@@ -83,7 +79,7 @@ public class HistoryVerticalAdapter extends RecyclerView.Adapter<HistoryVertical
         public ViewHolderDatos(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.name);
-            profileImage = (CircleImageView)itemView.findViewById(R.id.profileImage);
+            profileImage = (CircleImageView) itemView.findViewById(R.id.profileImage);
         }
 
     }

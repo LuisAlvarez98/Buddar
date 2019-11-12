@@ -1,6 +1,7 @@
 package com.app.buddar;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.app.buddar.adapters.ConnectionsVerticalAdapter;
 import com.app.buddar.adapters.HistoryVerticalAdapter;
@@ -23,6 +25,7 @@ import java.util.ArrayList;
  */
 public class HistoryFragment extends Fragment implements View.OnClickListener {
     private RecyclerView recyclerHistory;
+    private LinearLayout loaderContainer;
     /**
      * Perfil Fragment Constructor
      */
@@ -63,6 +66,15 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
         HistoryVerticalAdapter adapt = new HistoryVerticalAdapter(histories);
         recyclerHistory.setNestedScrollingEnabled(false);
         recyclerHistory.setAdapter(adapt);
+        loaderContainer = (LinearLayout)view.findViewById(R.id.loaderContainer);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loaderContainer.setVisibility(View.GONE);
+            }
+        }, 1000);
     }
 
     /**

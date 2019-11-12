@@ -1,5 +1,9 @@
 package com.app.buddar.objects;
 
+/**
+ * FAQ Item OBJ Class
+ * Class by: Luis Felipe Alvarez Sanchez
+ */
 public class FAQ {
     private String question;
     private String answer;

@@ -98,64 +98,8 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
                 Intent in = new Intent(FirstActivity.this, DashboardActivity.class);
                 startActivity(in);
                 finish();
-                progressLogin.setVisibility(View.VISIBLE);
                 username = emailInput.getText().toString();
                 password = passwordInput.getText().toString();
-                if (!username.isEmpty() && !password.isEmpty()) {
-                    try {
-                        JSONObject paramObject = new JSONObject();
-                        paramObject.put("username", username);
-                        paramObject.put("password", password);
-                        Log.d("response", paramObject.toString());
-                        Call<User> userCall = apiInterface.loginUser(paramObject.toString());
-                        userCall.enqueue(new Callback<User>() {
-                            @Override
-                            public void onResponse(Call<User> call, Response<User> response) {
-                                switch (response.code()) {
-                                    case 200:
-                                        SharedPreferences.Editor editor = pref.edit();
-                                        //Sets token in shared preferences
-                                        editor.putString("token", response.body().getToken());
-                                        //adds token to the shared prefrences
-                                        editor.commit();
-
-                                        progressLogin.setVisibility(View.GONE);
-                                        break;
-                                    case 400:
-                                        passwordInput.setError("Wrong credentials");
-                                        progressLogin.setVisibility(View.GONE);
-                                        break;
-                                    case 404:
-                                        passwordInput.setError("File not found.");
-                                        progressLogin.setVisibility(View.GONE);
-                                        break;
-                                    case 500:
-                                        passwordInput.setError("Server error.");
-                                        progressLogin.setVisibility(View.GONE);
-                                        break;
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<User> call, Throwable t) {
-                                Log.d("response", t.toString());
-                            }
-                        });
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                } else if (username.isEmpty()) {
-                    emailInput.setError("Input username");
-                    progressLogin.setVisibility(View.GONE);
-                } else if (password.isEmpty()) {
-                    passwordInput.setError("Input password");
-                    progressLogin.setVisibility(View.GONE);
-                } else {
-                    emailInput.setError("Invalid input");
-                    passwordInput.setError("Invalid input");
-                    progressLogin.setVisibility(View.GONE);
-                }
                 break;
         }
     }

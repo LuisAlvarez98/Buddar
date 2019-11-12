@@ -18,15 +18,13 @@ import com.app.buddar.objects.FAQ;
 import java.util.ArrayList;
 
 /**
- * Perfil Fragment
+ * Help Fragment
  * Created by Luis F. Alvarez
  */
 public class HelpFragment extends Fragment implements View.OnClickListener {
     private LinearLayout loaderContainer;
     private RecyclerView recyclerFAQ;
-    /**
-     * Perfil Fragment Constructor
-     */
+
     public HelpFragment() {
     }
 

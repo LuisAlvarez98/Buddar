@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,18 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.app.buddar.objects.Profile;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
+
+import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
 
 /**
  * Perfil Fragment
@@ -24,6 +34,17 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private CircleImageView profileImage;
     private Button submitButton, changePasswordButton;
     private LinearLayout loaderContainer;
+    private Profile profile;
+    //Retrofit init
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(Api.BASE_URL)
+            .client(getUnsafeOkHttpClient().build())
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+    Api apiInterface = retrofit.create(Api.class);
+
     /**
      * Perfil Fragment Constructor
      */
@@ -41,6 +62,21 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        //get profile
+        Call<Profile> call2 = apiInterface.getProfile();
+        call2.enqueue(new Callback<Profile>() {
+            @Override
+            public void onResponse(Call<Profile> call, Response<Profile> response) {
+                profile = response.body();
+                Toast.makeText(getContext(), response.code(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<Profile> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.profile_fragment, container, false);
     }
@@ -72,7 +108,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 loaderContainer.setVisibility(View.GONE);
             }
         }, 1000);
-
     }
 
     /**

@@ -1,5 +1,9 @@
 package com.app.buddar.objects;
 
+/**
+ * History Item OBJ Class
+ * Class by: Luis Felipe Alvarez Sanchez
+ */
 public class History {
     private String name;
     private String bio;

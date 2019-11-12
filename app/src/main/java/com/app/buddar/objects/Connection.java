@@ -1,5 +1,9 @@
 package com.app.buddar.objects;
 
+/**
+ * Connection Item OBJ Class
+ * Class by: Luis Felipe Alvarez Sanchez
+ */
 public class Connection {
     private String name;
     private String bio;

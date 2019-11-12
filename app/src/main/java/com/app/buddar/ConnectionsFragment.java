@@ -22,9 +22,7 @@ import java.util.ArrayList;
  */
 public class ConnectionsFragment extends Fragment implements View.OnClickListener {
     private LinearLayout loaderContainer;
-    /**
-     * Perfil Fragment Constructor
-     */
+
     private RecyclerView recylerConnections;
     public ConnectionsFragment() {
     }

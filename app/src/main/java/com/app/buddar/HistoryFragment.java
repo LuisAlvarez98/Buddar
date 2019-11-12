@@ -20,15 +20,13 @@ import com.app.buddar.objects.History;
 import java.util.ArrayList;
 
 /**
- * Perfil Fragment
+ * History Fragment
  * Created by Luis F. Alvarez
  */
 public class HistoryFragment extends Fragment implements View.OnClickListener {
     private RecyclerView recyclerHistory;
     private LinearLayout loaderContainer;
-    /**
-     * Perfil Fragment Constructor
-     */
+
     public HistoryFragment() {
     }
 
@@ -60,13 +58,13 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
         //info button
         recyclerHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         ArrayList<History> histories = new ArrayList<History>();
-        for(int i = 0 ;i < 5; i++){
-            histories.add(new History("Luis Alvarez ","Hello my name is Luis and I love to play videogames with my friends. I'm currently pursuing a Bachelor's degree in Computer Science!"));
+        for (int i = 0; i < 5; i++) {
+            histories.add(new History("Luis Alvarez ", "Hello my name is Luis and I love to play videogames with my friends. I'm currently pursuing a Bachelor's degree in Computer Science!"));
         }
         HistoryVerticalAdapter adapt = new HistoryVerticalAdapter(histories);
         recyclerHistory.setNestedScrollingEnabled(false);
         recyclerHistory.setAdapter(adapt);
-        loaderContainer = (LinearLayout)view.findViewById(R.id.loaderContainer);
+        loaderContainer = (LinearLayout) view.findViewById(R.id.loaderContainer);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

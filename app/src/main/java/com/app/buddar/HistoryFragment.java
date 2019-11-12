@@ -61,7 +61,7 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
         recyclerHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         ArrayList<History> histories = new ArrayList<History>();
         for(int i = 0 ;i < 5; i++){
-            histories.add(new History("History " + ((int)i + 1)));
+            histories.add(new History("Luis Alvarez ","Hello my name is Luis and I love to play videogames with my friends. I'm currently pursuing a Bachelor's degree in Computer Science!"));
         }
         HistoryVerticalAdapter adapt = new HistoryVerticalAdapter(histories);
         recyclerHistory.setNestedScrollingEnabled(false);

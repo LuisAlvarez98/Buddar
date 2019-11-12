@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.app.buddar.adapters.ConnectionsVerticalAdapter;
 import com.app.buddar.objects.Connection;
+import com.app.buddar.objects.History;
 
 import java.util.ArrayList;
 
@@ -57,7 +58,7 @@ public class ConnectionsFragment extends Fragment implements View.OnClickListene
         recylerConnections.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         ArrayList<Connection> connections = new ArrayList<Connection>();
         for(int i = 0 ;i < 20; i++){
-            connections.add(new Connection("Connection " + ((int)i + 1)));
+            connections.add(new Connection("Luis Alvarez ","Hello my name is Luis and I love to play videogames with my friends. I'm currently pursuing a Bachelor's degree in Computer Science!"));
         }
         ConnectionsVerticalAdapter adapt = new ConnectionsVerticalAdapter(connections);
         recylerConnections.setNestedScrollingEnabled(false);

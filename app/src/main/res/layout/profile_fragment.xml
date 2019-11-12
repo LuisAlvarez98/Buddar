@@ -8,30 +8,140 @@
     android:layout_marginTop="15dp"
     android:orientation="vertical"
     tools:context=".ProfileFragment">
-
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/loaderContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+    </LinearLayout>
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/ralewaysemibold"
+            android:gravity="center"
+            android:text="Hello, Luis"
+            android:textColor="#000"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:padding="25dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="Full name"
+            android:textColor="@color/colorPrimary" />
+        <EditText
+            android:id="@+id/nameInput"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Name"
+            android:text="Luis Alvarez"
+            android:inputType="textPersonName"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="Email"
+            android:textColor="@color/colorPrimary" />
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Email"
+            android:text="luisfalvarezsanchez@gmail.com"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="Bio"
+            android:textColor="@color/colorPrimary" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Profile"
-                android:fontFamily="@font/ralewaysemibold"
-                android:textColor="#000"
-                android:textSize="30dp"
-                android:textStyle="bold" />
+        <EditText
+            android:id="@+id/bioText"
+            android:hint="Bio"
+            android:gravity="left"
+            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:maxLines="4"
+            android:text="I love music!"
+            android:lines="4"/>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_weight=".50"
+               android:layout_marginRight="10dp"
+               android:layout_height="match_parent">
+               <Button
+                   android:id="@+id/submitButton"
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_gravity="right"
+                   android:background="@drawable/circle_btn"
+                   android:fontFamily="@font/ralewaymedium"
+                   android:paddingLeft="15dp"
+                   android:paddingRight="15dp"
+                   android:text="Submit"
+                   android:textAllCaps="false"
+                   android:textColor="@android:color/background_light" />
+
+           </LinearLayout>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_weight=".50"
+               android:layout_height="match_parent">
+               <Button
+                   android:id="@+id/changePassword"
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:layout_gravity="right"
+                   android:background="@drawable/circle_btn"
+                   android:fontFamily="@font/ralewaymedium"
+                   android:paddingLeft="15dp"
+                   android:paddingRight="15dp"
+                   android:textAllCaps="false"
+                   android:text="Change password"
+                   android:textColor="@android:color/background_light" />
+
+           </LinearLayout>
 
 
+       </LinearLayout>
+    </LinearLayout>
 
-        </LinearLayout>
-
-    </ScrollView>
 </LinearLayout>

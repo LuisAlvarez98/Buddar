@@ -39,7 +39,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private LinearLayout cart_button;
     private NavigationView nav_view;
     private LinearLayout logoutButton;
-    private TextView home_button;
+    private ImageView home_button;
 
 
     FrameLayout fragment_container;
@@ -72,7 +72,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         hamb_button = (ImageView) findViewById(R.id.hamb_button);
         hamb_button.setOnClickListener(this);
         //Home button
-        home_button = (TextView) findViewById(R.id.home_button);
+        home_button = (ImageView) findViewById(R.id.home_button);
         home_button.setOnClickListener(this);
         //Eventos button
         eventosButton = (ImageView) findViewById(R.id.eventosButton);

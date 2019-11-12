@@ -15,7 +15,7 @@
 
         android:gravity="center"
 
-        android:background="#407f7f"
+        android:background="#FFF"
         app:contentInsetStart="0dp">
 
         <LinearLayout
@@ -44,15 +44,13 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="0dp"
                     android:src="@drawable/hamb_button" />
-
-                <TextView
+                <ImageView
                     android:id="@+id/home_button"
-                    android:layout_width="match_parent"
+                    android:layout_width="115dp"
                     android:layout_height="match_parent"
-                    android:text="Buddar"
-                    android:textColor="#FFF"
-                    android:gravity="center"/>
-
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dip"
+                    android:src="@drawable/logo" />
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

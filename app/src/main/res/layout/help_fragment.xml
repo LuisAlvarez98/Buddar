@@ -18,29 +18,39 @@
             android:layout_width="50dp"
             android:layout_height="50dp"/>
     </LinearLayout>
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
+        android:overScrollMode="never"
         android:layout_height="match_parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Help"
-                android:fontFamily="@font/ralewaysemibold"
-                android:textColor="#000"
-                android:textSize="30dp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/ralewaysemibold"
+                    android:gravity="center"
+                    android:text="FAQ"
+                    android:textColor="#000"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerFAQ"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:paddingRight="20dp" />
         </LinearLayout>
 
-    </ScrollView>
+
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

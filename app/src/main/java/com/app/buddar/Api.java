@@ -88,8 +88,9 @@ public interface Api {
     @Headers("Content-Type: application/json")
     @GET("api/connections")
     Call<String> getConnections();
+
     /**
-     * get connections endpoint
+     * get recent connections endpoint
      *
      * @return
      */
@@ -97,6 +98,11 @@ public interface Api {
     @GET("api/recentConnections")
     Call<String> getRecentConnections();
 
+    /**
+     * getChat list endpoint
+     *
+     * @return
+     */
     @Headers("Content-Type: application/json")
     @GET("api/chat/list")
     Call<String> getChatList();

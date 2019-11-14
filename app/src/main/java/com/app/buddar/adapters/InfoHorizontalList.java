@@ -50,7 +50,8 @@ public class InfoHorizontalList extends RecyclerView.Adapter<InfoHorizontalList.
      */
     @Override
     public void onBindViewHolder(@NonNull final InfoHorizontalList.ViewHolderDatos holder, final int position) {
-        Picasso.get().load("https://scontent.fntr6-1.fna.fbcdn.net/v/t1.0-9/57738860_2189787707771861_2357075513719128064_n.jpg?_nc_cat=108&_nc_oc=AQkR0FD2ezHKLqilzxbqqTf3eXHYpCDCupqHbq-2uEivl5Fne-blS9-ngdYJKIhsFt8&_nc_ht=scontent.fntr6-1.fna&oh=ee0518b253fc53a1bd863c6079fee62f&oe=5E4F1BD5").into(holder.contentImage);
+        Picasso.get().load(listDatos.get(position).getUrl()).resize(950, 800)
+                .centerCrop().into(holder.contentImage);
     }
 
     /**

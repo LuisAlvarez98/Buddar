@@ -103,10 +103,10 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
                                     History history = new History();
                                     JSONObject json = new JSONObject(historyJson.get(i).toString());
                                     JSONObject user = new JSONObject(json.get("user").toString());
-                                    Log.d("history",user.toString());
 
                                     history.setName(user.getString("name"));
-                                    history.setEmail(user.getString("email"));
+                                    history.setBio(user.getString("bio"));
+                                    Log.d("BIUO", user.getString("bio"));
                                     history.setPicture(user.getString("picture"));
                                     histories.add(history);
 

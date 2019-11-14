@@ -50,7 +50,7 @@ public class HistoryVerticalAdapter extends RecyclerView.Adapter<HistoryVertical
     @Override
     public void onBindViewHolder(@NonNull final HistoryVerticalAdapter.ViewHolderDatos holder, final int position) {
         holder.name.setText(listDatos.get(position).getName());
-        holder.bio.setText(listDatos.get(position).getEmail());
+        holder.bio.setText(listDatos.get(position).getBio());
         Picasso.get().load(listDatos.get(position).getPicture()).into(holder.profileImage);
     }
 

@@ -8,14 +8,16 @@ public class History {
     private String name;
     private String email;
     private String picture;
+    private String bio;
 
     public History() {
     }
 
-    public History(String name, String email, String picture) {
+    public History(String name, String email, String picture, String bio) {
         this.name = name;
         this.email = email;
         this.picture = picture;
+        this.bio = bio;
     }
 
     public String getName() {
@@ -40,5 +42,13 @@ public class History {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

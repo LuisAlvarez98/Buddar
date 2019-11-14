@@ -9,6 +9,9 @@ public class InfoItem {
     private String info;
     private String url;
 
+    public InfoItem() {
+    }
+
     public InfoItem(String title, String info, String url) {
         this.title = title;
         this.info = info;

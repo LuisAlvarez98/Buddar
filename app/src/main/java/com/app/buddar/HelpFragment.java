@@ -101,7 +101,6 @@ public class HelpFragment extends Fragment implements View.OnClickListener {
                                 FAQ faq = new FAQ();
                                 JSONObject json = new JSONObject(historyJson.get(i).toString());
                                 JSONObject question = new JSONObject(json.get("question").toString());
-                                Log.d("history",question.toString());
 
                                 faq.setQuestion(question.getString("question"));
                                 faq.setAnswer(question.getString("answer"));

@@ -7,12 +7,14 @@ package com.app.buddar.objects;
 public class ChatItem {
     private String id;
     private String name;
-    private String imgUrl;
+    private String url;
+    public ChatItem(){
 
-    public ChatItem(String id, String name, String imgUrl) {
+    }
+    public ChatItem(String id, String name, String url) {
         this.id = id;
         this.name = name;
-        this.imgUrl = imgUrl;
+        this.url = url;
     }
 
     public String getId() {
@@ -31,11 +33,11 @@ public class ChatItem {
         this.name = name;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getUrl() {
+        return url;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

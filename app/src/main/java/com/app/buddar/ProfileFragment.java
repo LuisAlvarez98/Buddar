@@ -10,11 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.buddar.objects.Profile;
+import com.app.buddar.objects.User;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -30,11 +36,13 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
  * Perfil Fragment
  * Created by Luis F. Alvarez
  */
-public class ProfileFragment extends Fragment implements View.OnClickListener {
+public class ProfileFragment extends Fragment implements View.OnClickListener{
     private CircleImageView profileImage;
+    private EditText inputName, inputEmail, textBio;
     private Button submitButton, changePasswordButton;
     private LinearLayout loaderContainer;
-    private Profile profile;
+    private TextView title;
+    public static String userName,userPicture,userEmail,userBio;
     //Retrofit init
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(Api.BASE_URL)
@@ -63,20 +71,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        //get profile
-        Call<Profile> call2 = apiInterface.getProfile();
-        call2.enqueue(new Callback<Profile>() {
-            @Override
-            public void onResponse(Call<Profile> call, Response<Profile> response) {
-                profile = response.body();
-                Toast.makeText(getContext(), response.code(), Toast.LENGTH_LONG).show();
-            }
 
-            @Override
-            public void onFailure(Call<Profile> call, Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.profile_fragment, container, false);
     }
@@ -98,7 +93,45 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         changePasswordButton.setOnClickListener(this);
         loaderContainer = (LinearLayout)view.findViewById(R.id.loaderContainer);
 
-        Picasso.get().load("https://scontent.fntr6-1.fna.fbcdn.net/v/t1.0-9/57738860_2189787707771861_2357075513719128064_n.jpg?_nc_cat=108&_nc_oc=AQkR0FD2ezHKLqilzxbqqTf3eXHYpCDCupqHbq-2uEivl5Fne-blS9-ngdYJKIhsFt8&_nc_ht=scontent.fntr6-1.fna&oh=ee0518b253fc53a1bd863c6079fee62f&oe=5E4F1BD5").into(profileImage);
+        inputEmail = (EditText)view.findViewById(R.id.emailInput);
+        inputName = (EditText)view.findViewById(R.id.nameInput);
+        textBio = (EditText)view.findViewById(R.id.bioText);
+        title = (TextView)view.findViewById(R.id.title);
+
+        Call<String> call2 = apiInterface.getProfile();
+        call2.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                switch (response.code()) {
+                    case 200:
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.body());
+                            JSONObject parsedJson = new JSONObject( jsonObject.get("profile").toString());
+                            JSONObject userJson = new JSONObject( parsedJson.get("user").toString());
+
+                            String name = userJson.getString("name");
+                            String email = userJson.getString("email");
+                            String picture = userJson.getString("picture");
+                            String bio = userJson.getString("bio");
+                            title.setText("Hello, " + name);
+                            inputName.setText(name);
+                            inputEmail.setText(email);
+                            textBio.setText(bio);
+                            Picasso.get().load(picture).into(profileImage);
+
+                        }catch (JSONException err){
+                            Log.d("Error", err.toString());
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
 
 
         Handler handler = new Handler();
@@ -108,6 +141,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 loaderContainer.setVisibility(View.GONE);
             }
         }, 1000);
+
+
+
+
+
     }
 
     /**

@@ -2,9 +2,12 @@ package com.app.buddar;
 
 import com.app.buddar.objects.FAQ;
 import com.app.buddar.objects.History;
+import com.app.buddar.objects.Login;
 import com.app.buddar.objects.Match;
 import com.app.buddar.objects.Profile;
 import com.app.buddar.objects.User;
+
+import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -19,17 +22,16 @@ import retrofit2.http.POST;
 public interface Api {
 
     //URL
-    String BASE_URL = "http://ec2-3-86-24-174.compute-1.amazonaws.com/api/";
+    String BASE_URL = "http://ec2-3-86-24-174.compute-1.amazonaws.com/";
 
     /**
      * login user by post
      *
-     * @param body
      * @return
      */
     @Headers("Content-Type: application/json")
-    @POST("/login/")
-    Call<User> loginUser(@Body String body);
+    @POST("api/login/")
+    Call<String> loginUser();
 
     /**
      * register user by post
@@ -58,8 +60,8 @@ public interface Api {
      * @return
      */
     @Headers("Content-Type: application/json")
-    @GET("/profile")
-    Call<Profile> getProfile();
+    @GET("api/profile/")
+    Call<String> getProfile();
 
     /**
      * get FAQ endpoint

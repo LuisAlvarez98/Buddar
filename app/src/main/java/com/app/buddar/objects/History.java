@@ -7,6 +7,7 @@ package com.app.buddar.objects;
 public class History {
     private String name;
     private String bio;
+    private String date;
 
     public History(String name, String bio) {
         this.name = name;

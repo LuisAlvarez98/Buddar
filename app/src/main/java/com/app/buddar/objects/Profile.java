@@ -1,24 +1,33 @@
 package com.app.buddar.objects;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Profile {
-    String status;
+    @SerializedName("status")
+    @Expose
+    int status;
+    @SerializedName("message")
+    @Expose
     String message;
+    @SerializedName("user")
+    @Expose
     User user;
 
     public Profile() {
     }
 
-    public Profile(String status, String message, User user) {
+    public Profile(int status, String message, User user) {
         this.status = status;
         this.message = message;
         this.user = user;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

@@ -1,15 +1,26 @@
 package com.app.buddar.objects;
-/**
- * Chat User OBJ Class
- * Class by: Luis Felipe Alvarez Sanchez
- */
-public class User {
-  private String name;
-  private String email;
-  private String picture;
-  private String bio;
 
-    public User() {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+public class User {
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("email")
+    @Expose
+    private String email;
+    @SerializedName("picture")
+    @Expose
+    private String picture;
+    @SerializedName("bio")
+    @Expose
+    private String bio;
+
+    public User(String name, String email, String picture) {
+        this.name = name;
+        this.email = email;
+        this.picture = picture;
     }
 
     public User(String name, String email, String picture, String bio) {

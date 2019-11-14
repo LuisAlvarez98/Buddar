@@ -2,4 +2,5 @@
     <string name="app_name">Buddar</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="title_activity_step2">Step2</string>
 </resources>

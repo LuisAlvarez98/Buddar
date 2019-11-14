@@ -9,7 +9,6 @@
     android:orientation="vertical"
     tools:context=".DashboardFragment">
     <LinearLayout
-        android:visibility="gone"
         android:id="@+id/loaderContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

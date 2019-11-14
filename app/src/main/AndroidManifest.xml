@@ -15,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailUserActivity"></activity>
+        <activity android:name=".ConfirmationActivity"></activity>
+        <activity android:name=".Step2Activity" />
+        <activity android:name=".Step1Activity" />
+        <activity android:name=".DetailUserActivity" />
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".DashboardActivity"

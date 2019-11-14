@@ -1,5 +1,6 @@
 package com.app.buddar;
 
+import android.content.Intent;
 import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.os.Handler;
@@ -96,7 +97,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         //open dialog new event
         //showPopup(view);
         profileFragment = new ProfileFragment();
-
+        createConnection = (Button)view.findViewById(R.id.createConnection);
+        createConnection.setOnClickListener(this);
+        loaderContainer = (LinearLayout) view.findViewById(R.id.loaderContainer);
         //Load chat items into adapter
         recyclerChat = (RecyclerView) view.findViewById(R.id.recyclerChat);
         //info button
@@ -125,7 +128,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                             adaptChat = new ChatsHorizontalAdapter(chatItem);
                             recyclerChat.setNestedScrollingEnabled(false);
                             recyclerChat.setAdapter(adaptChat);
-
+                            loaderContainer.setVisibility(View.GONE);
                         }catch (JSONException err){
                             Log.d("Error", err.toString());
                         }
@@ -172,7 +175,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                             adaptInfo = new InfoHorizontalList(infos);
                             recyclerInfo.setNestedScrollingEnabled(false);
                             recyclerInfo.setAdapter(adaptInfo);
-
+                            loaderContainer.setVisibility(View.GONE);
                         }catch (JSONException err){
                             Log.d("Error", err.toString());
                         }
@@ -186,16 +189,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             }
         });
 
-        createConnection = (Button)view.findViewById(R.id.createConnection);
-        createConnection.setOnClickListener(this);
-        loaderContainer = (LinearLayout) view.findViewById(R.id.loaderContainer);
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                loaderContainer.setVisibility(View.GONE);
-            }
-        }, 1000);
+
     }
 
 
@@ -209,7 +203,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         switch (view.getId()) {
             case R.id.createConnection:
                 //Goto create connection
-                Toast.makeText(getContext(), "Create connection", Toast.LENGTH_SHORT).show();
+                Intent loginIntent = new Intent(view.getContext(), Step1Activity.class);
+                startActivity(loginIntent);
                 break;
         }
     }

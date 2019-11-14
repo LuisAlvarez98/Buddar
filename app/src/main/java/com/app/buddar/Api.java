@@ -36,12 +36,11 @@ public interface Api {
     /**
      * register user by post
      *
-     * @param body
      * @return
      */
     @Headers("Content-Type: application/json")
-    @POST("/register/")
-    Call<User> createUser(@Body String body);
+    @POST("api/register/")
+    Call<String> createUser();
 
     /**
      * create match by post
@@ -69,8 +68,8 @@ public interface Api {
      * @return
      */
     @Headers("Content-Type: application/json")
-    @GET("/faq/")
-    Call<FAQ> getFAQ();
+    @GET("api/faq/")
+    Call<String> getFAQ();
 
     /**
      * get history endpoint
@@ -82,13 +81,24 @@ public interface Api {
     Call<String> getHistory();
 
     /**
-     * get history endpoint
+     * get connections endpoint
      *
      * @return
      */
     @Headers("Content-Type: application/json")
-    @GET("api/history")
+    @GET("api/connections")
     Call<String> getConnections();
+    /**
+     * get connections endpoint
+     *
+     * @return
+     */
+    @Headers("Content-Type: application/json")
+    @GET("api/recentConnections")
+    Call<String> getRecentConnections();
 
+    @Headers("Content-Type: application/json")
+    @GET("api/chat/list")
+    Call<String> getChatList();
 }
 

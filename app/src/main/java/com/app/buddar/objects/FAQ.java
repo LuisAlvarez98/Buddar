@@ -7,7 +7,9 @@ package com.app.buddar.objects;
 public class FAQ {
     private String question;
     private String answer;
+    public FAQ(){
 
+    }
     public FAQ(String question, String answer) {
         this.question = question;
         this.answer = answer;

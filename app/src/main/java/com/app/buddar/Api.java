@@ -78,8 +78,17 @@ public interface Api {
      * @return
      */
     @Headers("Content-Type: application/json")
-    @GET("/history/")
-    Call<History> getHistory();
+    @GET("api/history")
+    Call<String> getHistory();
+
+    /**
+     * get history endpoint
+     *
+     * @return
+     */
+    @Headers("Content-Type: application/json")
+    @GET("api/history")
+    Call<String> getConnections();
 
 }
 

@@ -6,20 +6,16 @@ package com.app.buddar.objects;
  */
 public class History {
     private String name;
-    private String bio;
-    private String date;
+    private String email;
+    private String picture;
 
-    public History(String name, String bio) {
+    public History() {
+    }
+
+    public History(String name, String email, String picture) {
         this.name = name;
-        this.bio = bio;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
+        this.email = email;
+        this.picture = picture;
     }
 
     public String getName() {
@@ -28,5 +24,21 @@ public class History {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

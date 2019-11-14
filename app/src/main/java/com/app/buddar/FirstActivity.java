@@ -84,44 +84,7 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         /**
          * Login done
          */
-        Call<String> userCall = apiInterface.loginUser();
-        userCall.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                switch (response.code()) {
-                    case 200:
-                        try {
-                            JSONObject jsonObject = new JSONObject(response.body());
-                            JSONObject parsedJson = new JSONObject( jsonObject.get("login").toString());
-                            int status = parsedJson.getInt("status");
-                            String message = parsedJson.getString("message");
-                            String token = parsedJson.getString("token");
 
-                            Log.d("jaja", message);
-                        }catch (JSONException err){
-                            Log.d("Error", err.toString());
-                        }
-                        break;
-                    case 400:
-                        passwordInput.setError("Wrong credentials");
-                        progressLogin.setVisibility(View.GONE);
-                        break;
-                    case 404:
-                        passwordInput.setError("File not found.");
-                        progressLogin.setVisibility(View.GONE);
-                        break;
-                    case 500:
-                        passwordInput.setError("Server error.");
-                        progressLogin.setVisibility(View.GONE);
-                        break;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.d("response", t.toString());
-            }
-        });
     }
 
     /**
@@ -138,11 +101,54 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
                 break;
             //Login user
             case R.id.loginButton:
-                Intent in = new Intent(FirstActivity.this, DashboardActivity.class);
-                startActivity(in);
-                finish();
                 username = emailInput.getText().toString();
                 password = passwordInput.getText().toString();
+                if(!username.isEmpty() && !password.isEmpty()){
+                    Call<String> userCall = apiInterface.loginUser();
+                    userCall.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            switch (response.code()) {
+                                case 200:
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response.body());
+                                        JSONObject parsedJson = new JSONObject( jsonObject.get("login").toString());
+                                        int status = parsedJson.getInt("status");
+                                        String message = parsedJson.getString("message");
+                                        String token = parsedJson.getString("token");
+
+                                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                                        Intent in = new Intent(FirstActivity.this, DashboardActivity.class);
+                                        startActivity(in);
+                                        finish();
+                                    }catch (JSONException err){
+                                        Log.d("Error", err.toString());
+                                    }
+                                    break;
+                                case 400:
+                                    passwordInput.setError("Wrong credentials");
+                                    progressLogin.setVisibility(View.GONE);
+                                    break;
+                                case 404:
+                                    passwordInput.setError("File not found.");
+                                    progressLogin.setVisibility(View.GONE);
+                                    break;
+                                case 500:
+                                    passwordInput.setError("Server error.");
+                                    progressLogin.setVisibility(View.GONE);
+                                    break;
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            Log.d("response", t.toString());
+                        }
+                    });
+                }else{
+                    Toast.makeText(getApplicationContext(), "Por favor ingrese sus credenciales de forma correcta.", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
         }
     }

@@ -10,7 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="25dp">
 
         <ImageView
             android:id="@+id/back_button"
@@ -23,16 +24,46 @@
 
 
     </LinearLayout>
-    <Button
-        android:id="@+id/continueButton"
-        android:layout_width="324dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:background="@drawable/circle_btn"
-        android:fontFamily="@font/ralewaymedium"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:textAllCaps="false"
-        android:text="Continue"
-        android:textColor="@android:color/background_light" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your new connection will be assigned in a minute."
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textSize="32sp"/>
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_watch" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please be patient"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textSize="32sp"
+            android:layout_marginBottom="50dp"/>
+        <Button
+            android:id="@+id/continueButton"
+            android:layout_width="324dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/circle_btn"
+            android:fontFamily="@font/ralewaymedium"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
+
 </LinearLayout>

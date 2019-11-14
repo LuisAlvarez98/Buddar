@@ -1,13 +1,18 @@
 package com.app.buddar.adapters;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.app.buddar.DashboardActivity;
+import com.app.buddar.DetailUserActivity;
+import com.app.buddar.FirstActivity;
 import com.app.buddar.R;
 import com.app.buddar.objects.ChatItem;
 import com.app.buddar.objects.InfoItem;
@@ -50,8 +55,22 @@ public class InfoHorizontalList extends RecyclerView.Adapter<InfoHorizontalList.
      */
     @Override
     public void onBindViewHolder(@NonNull final InfoHorizontalList.ViewHolderDatos holder, final int position) {
-        Picasso.get().load(listDatos.get(position).getUrl()).resize(950, 800)
+        Picasso.get().load(listDatos.get(position).getPicture()).resize(950, 800)
                 .centerCrop().into(holder.contentImage);
+        holder.item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent infoIntent = new Intent(view.getContext(), DetailUserActivity.class);
+                infoIntent.putExtra("name",listDatos.get(position).getName());
+                infoIntent.putExtra("email",listDatos.get(position).getEmail());
+                infoIntent.putExtra("picture",listDatos.get(position).getPicture());
+                infoIntent.putExtra("bio",listDatos.get(position).getBio());
+
+                view.getContext().startActivity(infoIntent);
+
+
+            }
+        });
     }
 
     /**
@@ -77,10 +96,11 @@ public class InfoHorizontalList extends RecyclerView.Adapter<InfoHorizontalList.
         ImageView contentImage;
         TextView title;
         TextView info;
-
+        LinearLayout item;
         public ViewHolderDatos(View itemView) {
             super(itemView);
             contentImage = (ImageView) itemView.findViewById(R.id.contentImage);
+            item = (LinearLayout)itemView.findViewById(R.id.item);
         }
 
     }

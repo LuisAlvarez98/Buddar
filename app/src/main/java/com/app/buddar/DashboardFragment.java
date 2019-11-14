@@ -162,7 +162,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                                 InfoItem info = new InfoItem();
                                 JSONObject json = new JSONObject(historyJson.get(i).toString());
                                 JSONObject user = new JSONObject(json.get("user").toString());
-                                info.setUrl(user.getString("picture"));
+                                info.setEmail(user.getString("email"));
+                                info.setName(user.getString(("name")));
+                                info.setBio(user.getString(("bio")));
+                                info.setPicture(user.getString("picture"));
                                 infos.add(info);
 
                             }

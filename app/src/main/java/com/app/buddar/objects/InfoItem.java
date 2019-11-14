@@ -5,40 +5,50 @@ package com.app.buddar.objects;
  * Class by: Luis Felipe Alvarez Sanchez
  */
 public class InfoItem {
-    private String title;
-    private String info;
-    private String url;
+    private String name;
+    private String email;
+    private String picture;
+    private String bio;
 
     public InfoItem() {
     }
 
-    public InfoItem(String title, String info, String url) {
-        this.title = title;
-        this.info = info;
-        this.url = url;
+    public InfoItem(String name, String email, String picture, String bio) {
+        this.name = name;
+        this.email = email;
+        this.picture = picture;
+        this.bio = bio;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getInfo() {
-        return info;
+    public String getEmail() {
+        return email;
     }
 
-    public void setInfo(String info) {
-        this.info = info;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUrl() {
-        return url;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

@@ -29,7 +29,7 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
 
 /**
  * DashBoard activity
- * Luis Felipe Alvarez Sanchez
+ * Created by Luis F. Alvarez
  */
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     //nav

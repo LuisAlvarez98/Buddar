@@ -35,6 +35,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
 
 /**
+ * ConnectionsFragment
+ * Displays all the connections of the user
  */
 public class ConnectionsFragment extends Fragment implements View.OnClickListener {
     private LinearLayout loaderContainer;

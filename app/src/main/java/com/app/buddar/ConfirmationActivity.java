@@ -7,6 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
+import static com.app.buddar.DashboardFragment.interests;
+
+/**
+ * Confirmation Activity Class
+ * Created by Luis F. Alvarez
+ */
 public class ConfirmationActivity extends AppCompatActivity {
     private ImageView back_button;
     private Button continueButton;
@@ -28,6 +36,7 @@ public class ConfirmationActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                interests = new ArrayList<String>();
                 finish();
             }
         });

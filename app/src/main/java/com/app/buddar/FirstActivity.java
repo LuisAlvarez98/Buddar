@@ -31,7 +31,7 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
 
 /**
  * First Activity Class
- * Luis Felipe Alvarez Sanchez
+ * Created by Luis F. Alvarez
  */
 public class FirstActivity extends AppCompatActivity implements View.OnClickListener, Callback<User> {
     private Button loginButton;

@@ -83,7 +83,7 @@
             android:fontFamily="@font/ralewaymedium"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:text="Entrar"
+            android:text="Log in"
             android:textColor="@android:color/background_light" />
     </LinearLayout>
 

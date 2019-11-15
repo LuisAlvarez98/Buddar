@@ -23,16 +23,66 @@
 
 
     </LinearLayout>
-    <Button
-        android:id="@+id/continueButton"
-        android:layout_width="324dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:background="@drawable/circle_btn"
-        android:fontFamily="@font/ralewaymedium"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:textAllCaps="false"
-        android:text="Continue"
-        android:textColor="@android:color/background_light" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="18dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Type your interests"
+                android:textColor="#000"
+                android:layout_marginBottom="10dp"
+                android:textSize="32sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="35dp"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/interest"
+                    android:layout_weight=".6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Interest"/>
+                <Button
+                    android:id="@+id/addInterest"
+                    android:layout_width="50dp"
+                    android:text="+"
+                    android:textSize="20sp"
+                    android:textColor="#FFF"
+                    android:background="@drawable/circle_btn2"
+                    android:layout_height="50dp"/>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerInterests"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="35dp"/>
+
+            <Button
+                android:id="@+id/continueButton"
+                android:layout_width="324dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_btn"
+                android:fontFamily="@font/ralewaymedium"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:textAllCaps="false"
+                android:text="Continue"
+                android:textColor="@android:color/background_light" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
 </LinearLayout>

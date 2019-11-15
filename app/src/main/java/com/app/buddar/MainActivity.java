@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 /**
  * MainActivity Class
- * Luis Felipe Alvarez Sanchez
+ * Created by Luis F. Alvarez
  */
 public class MainActivity extends AppCompatActivity {
     //TODO: change time interval for splash to 2000

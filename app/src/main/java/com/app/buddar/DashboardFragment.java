@@ -51,6 +51,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     ProfileFragment profileFragment;
     private LinearLayout loaderContainer;
     private RecyclerView recyclerChat, recyclerInfo;
+    public static ArrayList<String> interests;
 
 
     private Button createConnection;
@@ -96,6 +97,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         super.onViewCreated(view, savedInstanceState);
         //open dialog new event
         //showPopup(view);
+        interests = new ArrayList<String>();
         profileFragment = new ProfileFragment();
         createConnection = (Button)view.findViewById(R.id.createConnection);
         createConnection.setOnClickListener(this);
@@ -118,7 +120,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                             JSONArray historyJson = new JSONArray( parsedJson.get("list").toString());
 
                             int len = historyJson.length();
-                            for (int i=0;i<len;i++){
+                            for (int i=0;i<len;i++) {
                                 ChatItem info = new ChatItem();
                                 JSONObject json = new JSONObject(historyJson.get(i).toString());
                                 JSONObject user = new JSONObject(json.get("user").toString());

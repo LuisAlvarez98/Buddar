@@ -11,6 +11,10 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
+/**
+ * DetailUserActivity Class
+ * Displays the info of a desired user
+ */
 public class DetailUserActivity extends AppCompatActivity {
 
     private ImageView back_button;

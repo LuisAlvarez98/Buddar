@@ -21,6 +21,10 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
 
+/**
+ * Register Activity
+ * Created by Luis F. Alvarez
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private ImageView back_button;

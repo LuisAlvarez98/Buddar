@@ -7,6 +7,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+
+import static com.app.buddar.DashboardFragment.interests;
+
+/**
+ * Step1Activity
+ * Here the user selects what type of activity does he want to take
+ * Created by Luis F. Alvarez
+ */
 public class Step1Activity extends AppCompatActivity {
     private ImageView back_button;
 
@@ -47,6 +56,8 @@ public class Step1Activity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Resets interests
+                interests = new ArrayList<String>();
                 finish();
             }
         });

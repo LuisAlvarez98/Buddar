@@ -17,7 +17,8 @@ import retrofit2.http.POST;
 
 /**
  * Interface for API
- * Here we init the gets and posts
+ * Here we init all the http requests
+ * Created by Luis F. Alvarez
  */
 public interface Api {
 

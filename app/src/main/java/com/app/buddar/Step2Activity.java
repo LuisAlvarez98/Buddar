@@ -22,6 +22,10 @@ import static com.app.buddar.DashboardFragment.interests;
  * Setp2Activity
  * Here the user inputs their interests
  * Created by Luis F. Alvarez
+ * <p>
+ * RF03 - Conectar con usuario
+ * Casos de uso que cumple esta pantalla:
+ * . Ingresar intereses
  */
 public class Step2Activity extends AppCompatActivity {
     private ImageView back_button;
@@ -41,7 +45,7 @@ public class Step2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_step2);
 
         //Continue button listener
-        continueButton = (Button)findViewById(R.id.continueButton);
+        continueButton = (Button) findViewById(R.id.continueButton);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +55,7 @@ public class Step2Activity extends AppCompatActivity {
         });
 
         //back button definition
-        back_button = (ImageView)findViewById(R.id.back_button);
+        back_button = (ImageView) findViewById(R.id.back_button);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,9 +65,9 @@ public class Step2Activity extends AppCompatActivity {
 
 
         //definition of components
-        addInterest = (Button)findViewById(R.id.addInterest);
-        recyclerInterests = (RecyclerView)findViewById(R.id.recyclerInterests);
-        interestInput = (EditText)findViewById(R.id.interest);
+        addInterest = (Button) findViewById(R.id.addInterest);
+        recyclerInterests = (RecyclerView) findViewById(R.id.recyclerInterests);
+        interestInput = (EditText) findViewById(R.id.interest);
         recyclerInterests.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         recyclerInterests.setNestedScrollingEnabled(false);
 
@@ -72,11 +76,13 @@ public class Step2Activity extends AppCompatActivity {
         addInterest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(interestInput.getText().toString() != ""){
+                if (!interestInput.getText().toString().isEmpty()) {
                     interests.add(interestInput.getText().toString());
                     interestVerticalList.notifyDataSetChanged();
                     interestInput.setText("");
                     Toast.makeText(getApplicationContext(), "Interest added!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Please input something!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

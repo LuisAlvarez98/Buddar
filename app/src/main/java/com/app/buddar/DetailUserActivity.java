@@ -14,6 +14,10 @@ import org.w3c.dom.Text;
 /**
  * DetailUserActivity Class
  * Displays the info of a desired user
+ * <p>
+ * RF04 - Lista de conexiones mas recientes
+ * Casos de uso que cumple esta pantalla:
+ * . Visualizar perfil de conexion reciente
  */
 public class DetailUserActivity extends AppCompatActivity {
 
@@ -29,7 +33,7 @@ public class DetailUserActivity extends AppCompatActivity {
         //Definition of objects
 
 
-        back_button = (ImageView)findViewById(R.id.back_button);
+        back_button = (ImageView) findViewById(R.id.back_button);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,15 +41,15 @@ public class DetailUserActivity extends AppCompatActivity {
             }
         });
 
-        email = (TextView)findViewById(R.id.email);
-        name = (TextView)findViewById(R.id.name);
-        bio = (TextView)findViewById(R.id.bio);
-        profileImage = (ImageView)findViewById(R.id.profileImage);
+        email = (TextView) findViewById(R.id.email);
+        name = (TextView) findViewById(R.id.name);
+        bio = (TextView) findViewById(R.id.bio);
+        profileImage = (ImageView) findViewById(R.id.profileImage);
 
         //Get items from intent;
 
-        Intent intent  = getIntent();
-        if(intent != null){
+        Intent intent = getIntent();
+        if (intent != null) {
             name.setText(intent.getStringExtra("name"));
             bio.setText(intent.getStringExtra("bio"));
             email.setText(intent.getStringExtra("email"));

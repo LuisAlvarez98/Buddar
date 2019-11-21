@@ -37,6 +37,10 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
 /**
  * Help Fragment
  * Created by Luis F. Alvarez
+ * <p>
+ * RF06 - Soporte de usuario
+ * Casos de uso que cumple esta pantalla:
+ * . FAQ
  */
 public class HelpFragment extends Fragment implements View.OnClickListener {
     private LinearLayout loaderContainer;
@@ -50,6 +54,7 @@ public class HelpFragment extends Fragment implements View.OnClickListener {
 
     Api apiInterface = retrofit.create(Api.class);
     FAQVerticalAdapter adapt;
+
     public HelpFragment() {
     }
 
@@ -81,8 +86,7 @@ public class HelpFragment extends Fragment implements View.OnClickListener {
         //info button
         recyclerFAQ.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-
-
+        //get faq from service
         Call<String> call2 = apiInterface.getFAQ();
         call2.enqueue(new Callback<String>() {
             @Override
@@ -91,13 +95,13 @@ public class HelpFragment extends Fragment implements View.OnClickListener {
                     case 200:
 
                         try {
-                            ArrayList<FAQ>faqs = new ArrayList<FAQ>();
+                            ArrayList<FAQ> faqs = new ArrayList<FAQ>();
                             JSONObject jsonObject = new JSONObject(response.body());
-                            JSONObject parsedJson = new JSONObject( jsonObject.get("FAQ").toString());
-                            JSONArray historyJson = new JSONArray( parsedJson.get("questions").toString());
+                            JSONObject parsedJson = new JSONObject(jsonObject.get("FAQ").toString());
+                            JSONArray historyJson = new JSONArray(parsedJson.get("questions").toString());
 
                             int len = historyJson.length();
-                            for (int i=0;i<len;i++){
+                            for (int i = 0; i < len; i++) {
                                 FAQ faq = new FAQ();
                                 JSONObject json = new JSONObject(historyJson.get(i).toString());
                                 JSONObject question = new JSONObject(json.get("question").toString());
@@ -111,7 +115,7 @@ public class HelpFragment extends Fragment implements View.OnClickListener {
                             recyclerFAQ.setNestedScrollingEnabled(false);
                             recyclerFAQ.setAdapter(adapt);
 
-                        }catch (JSONException err){
+                        } catch (JSONException err) {
                             Log.d("Error", err.toString());
                         }
                         break;
@@ -124,7 +128,7 @@ public class HelpFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        loaderContainer = (LinearLayout)view.findViewById(R.id.loaderContainer);
+        loaderContainer = (LinearLayout) view.findViewById(R.id.loaderContainer);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

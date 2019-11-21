@@ -1,12 +1,16 @@
 package com.app.buddar.adapters;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.app.buddar.ChatActivity;
+import com.app.buddar.DetailUserActivity;
 import com.app.buddar.R;
 import com.app.buddar.objects.ChatItem;
 import com.app.buddar.objects.Connection;
@@ -50,6 +54,15 @@ public class ChatsHorizontalAdapter extends RecyclerView.Adapter<ChatsHorizontal
     @Override
     public void onBindViewHolder(@NonNull final ChatsHorizontalAdapter.ViewHolderDatos holder, final int position) {
         Picasso.get().load(listDatos.get(position).getUrl()).into(holder.profileImage);
+        holder.item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent infoIntent = new Intent(view.getContext(), ChatActivity.class);
+                infoIntent.putExtra("name",listDatos.get(position).getName());
+                infoIntent.putExtra("picture",listDatos.get(position).getUrl());
+                view.getContext().startActivity(infoIntent);
+            }
+        });
     }
 
     /**
@@ -73,10 +86,12 @@ public class ChatsHorizontalAdapter extends RecyclerView.Adapter<ChatsHorizontal
      */
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
         CircleImageView profileImage;
+        LinearLayout item;
 
         public ViewHolderDatos(View itemView) {
             super(itemView);
             profileImage = (CircleImageView) itemView.findViewById(R.id.profileImage);
+            item = (LinearLayout)itemView.findViewById(R.id.item);
         }
 
     }

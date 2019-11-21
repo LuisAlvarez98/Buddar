@@ -45,6 +45,14 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
 /**
  * Dashboard Fragment - Displays categories
  * Luis Felipe Alvarez Sanchez
+ * <p>
+ * RF03 - Conectar con usuario
+ * * Casos de uso que cumple esta pantalla:
+ * * . Solicitar conexion
+ * <p>
+ * RF04 - Lista de conexiones mas recientes
+ * Casos de uso que cumple esta pantalla:
+ * . Visualizar perfil de conexion reciente
  */
 public class DashboardFragment extends Fragment implements View.OnClickListener {
     ImageButton misProductos, eventosEnCurso, solicitudesDeEventos, historialDeEventos, miPerfil;
@@ -65,6 +73,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     Api apiInterface = retrofit.create(Api.class);
     InfoHorizontalList adaptInfo;
     ChatsHorizontalAdapter adaptChat;
+
     /**
      * Dashboard Fragment Constructor
      */
@@ -99,7 +108,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         //showPopup(view);
         interests = new ArrayList<String>();
         profileFragment = new ProfileFragment();
-        createConnection = (Button)view.findViewById(R.id.createConnection);
+        createConnection = (Button) view.findViewById(R.id.createConnection);
         createConnection.setOnClickListener(this);
         loaderContainer = (LinearLayout) view.findViewById(R.id.loaderContainer);
         //Load chat items into adapter
@@ -114,16 +123,17 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                     case 200:
 
                         try {
-                            ArrayList<ChatItem>chatItem = new ArrayList<ChatItem>();
+                            ArrayList<ChatItem> chatItem = new ArrayList<ChatItem>();
                             JSONObject jsonObject = new JSONObject(response.body());
-                            JSONObject parsedJson = new JSONObject( jsonObject.get("chatList").toString());
-                            JSONArray historyJson = new JSONArray( parsedJson.get("list").toString());
+                            JSONObject parsedJson = new JSONObject(jsonObject.get("chatList").toString());
+                            JSONArray historyJson = new JSONArray(parsedJson.get("list").toString());
 
                             int len = historyJson.length();
-                            for (int i=0;i<len;i++) {
+                            for (int i = 0; i < len; i++) {
                                 ChatItem info = new ChatItem();
                                 JSONObject json = new JSONObject(historyJson.get(i).toString());
                                 JSONObject user = new JSONObject(json.get("user").toString());
+                                info.setName(user.getString("name"));
                                 info.setUrl(user.getString("picture"));
                                 chatItem.add(info);
                             }
@@ -131,7 +141,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                             recyclerChat.setNestedScrollingEnabled(false);
                             recyclerChat.setAdapter(adaptChat);
                             loaderContainer.setVisibility(View.GONE);
-                        }catch (JSONException err){
+                        } catch (JSONException err) {
                             Log.d("Error", err.toString());
                         }
                         break;
@@ -157,13 +167,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                     case 200:
 
                         try {
-                            ArrayList<InfoItem>infos = new ArrayList<InfoItem>();
+                            ArrayList<InfoItem> infos = new ArrayList<InfoItem>();
                             JSONObject jsonObject = new JSONObject(response.body());
-                            JSONObject parsedJson = new JSONObject( jsonObject.get("connections").toString());
-                            JSONArray historyJson = new JSONArray( parsedJson.get("connections").toString());
+                            JSONObject parsedJson = new JSONObject(jsonObject.get("connections").toString());
+                            JSONArray historyJson = new JSONArray(parsedJson.get("connections").toString());
 
                             int len = historyJson.length();
-                            for (int i=0;i<len;i++){
+                            for (int i = 0; i < len; i++) {
                                 InfoItem info = new InfoItem();
                                 JSONObject json = new JSONObject(historyJson.get(i).toString());
                                 JSONObject user = new JSONObject(json.get("user").toString());
@@ -178,7 +188,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                             recyclerInfo.setNestedScrollingEnabled(false);
                             recyclerInfo.setAdapter(adaptInfo);
                             loaderContainer.setVisibility(View.GONE);
-                        }catch (JSONException err){
+                        } catch (JSONException err) {
                             Log.d("Error", err.toString());
                         }
                         break;

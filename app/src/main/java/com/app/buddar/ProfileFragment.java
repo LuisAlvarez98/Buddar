@@ -35,14 +35,18 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
 /**
  * Perfil Fragment
  * Created by Luis F. Alvarez
+ * <p>
+ * RF02 - Administracion de Perfil
+ * Casos de uso que cumple esta pantalla:
+ * . Editar perfil
  */
-public class ProfileFragment extends Fragment implements View.OnClickListener{
+public class ProfileFragment extends Fragment implements View.OnClickListener {
     private CircleImageView profileImage;
     private EditText inputName, inputEmail, textBio;
     private Button submitButton, changePasswordButton;
     private LinearLayout loaderContainer;
     private TextView title;
-    public static String userName,userPicture,userEmail,userBio;
+    public static String userName, userPicture, userEmail, userBio;
     //Retrofit init
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(Api.BASE_URL)
@@ -86,17 +90,17 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        profileImage = (CircleImageView)view.findViewById(R.id.profileImage);
-        submitButton = (Button)view.findViewById(R.id.submitButton);
+        profileImage = (CircleImageView) view.findViewById(R.id.profileImage);
+        submitButton = (Button) view.findViewById(R.id.submitButton);
         submitButton.setOnClickListener(this);
-        changePasswordButton = (Button)view.findViewById(R.id.changePassword);
+        changePasswordButton = (Button) view.findViewById(R.id.changePassword);
         changePasswordButton.setOnClickListener(this);
-        loaderContainer = (LinearLayout)view.findViewById(R.id.loaderContainer);
+        loaderContainer = (LinearLayout) view.findViewById(R.id.loaderContainer);
 
-        inputEmail = (EditText)view.findViewById(R.id.emailInput);
-        inputName = (EditText)view.findViewById(R.id.nameInput);
-        textBio = (EditText)view.findViewById(R.id.bioText);
-        title = (TextView)view.findViewById(R.id.title);
+        inputEmail = (EditText) view.findViewById(R.id.emailInput);
+        inputName = (EditText) view.findViewById(R.id.nameInput);
+        textBio = (EditText) view.findViewById(R.id.bioText);
+        title = (TextView) view.findViewById(R.id.title);
 
         Call<String> call2 = apiInterface.getProfile();
         call2.enqueue(new Callback<String>() {
@@ -106,8 +110,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                     case 200:
                         try {
                             JSONObject jsonObject = new JSONObject(response.body());
-                            JSONObject parsedJson = new JSONObject( jsonObject.get("profile").toString());
-                            JSONObject userJson = new JSONObject( parsedJson.get("user").toString());
+                            JSONObject parsedJson = new JSONObject(jsonObject.get("profile").toString());
+                            JSONObject userJson = new JSONObject(parsedJson.get("user").toString());
 
                             String name = userJson.getString("name");
                             String email = userJson.getString("email");
@@ -119,7 +123,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                             textBio.setText(bio);
                             Picasso.get().load(picture).into(profileImage);
 
-                        }catch (JSONException err){
+                        } catch (JSONException err) {
                             Log.d("Error", err.toString());
                         }
                         break;
@@ -133,7 +137,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         });
 
 
-
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -141,9 +144,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                 loaderContainer.setVisibility(View.GONE);
             }
         }, 1000);
-
-
-
 
 
     }

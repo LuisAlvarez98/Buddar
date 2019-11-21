@@ -24,11 +24,15 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
 /**
  * Register Activity
  * Created by Luis F. Alvarez
+ * RF01 - Autenticacion de Usuario
+ * Casos de uso que cumple esta pantalla:
+ * . Registro de usuario
  */
 public class RegisterActivity extends AppCompatActivity {
 
     private ImageView back_button;
     private Button submitButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,38 +55,38 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        submitButton = (Button)findViewById(R.id.submitButton);
+        submitButton = (Button) findViewById(R.id.submitButton);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //validate input and create a POST request
-                    Call<String> userCall = apiInterface.createUser();
-                    userCall.enqueue(new Callback<String>() {
-                        @Override
-                        public void onResponse(Call<String> call, Response<String> response) {
-                            switch (response.code()) {
-                                case 200:
-                                    try {
-                                        JSONObject jsonObject = new JSONObject(response.body());
-                                        JSONObject parsedJson = new JSONObject( jsonObject.get("register").toString());
-                                        int status = parsedJson.getInt("status");
-                                        String message = parsedJson.getString("message");
-                                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-                                        Intent in = new Intent(RegisterActivity.this, DashboardActivity.class);
-                                        startActivity(in);
-                                        finish();
-                                    }catch (JSONException err){
-                                        Log.d("Error", err.toString());
-                                    }
-                                    break;
-                            }
+                Call<String> userCall = apiInterface.createUser();
+                userCall.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        switch (response.code()) {
+                            case 200:
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response.body());
+                                    JSONObject parsedJson = new JSONObject(jsonObject.get("register").toString());
+                                    int status = parsedJson.getInt("status");
+                                    String message = parsedJson.getString("message");
+                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                                    Intent in = new Intent(RegisterActivity.this, DashboardActivity.class);
+                                    startActivity(in);
+                                    finish();
+                                } catch (JSONException err) {
+                                    Log.d("Error", err.toString());
+                                }
+                                break;
                         }
+                    }
 
-                        @Override
-                        public void onFailure(Call<String> call, Throwable t) {
-                            Log.d("response", t.toString());
-                        }
-                    });
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Log.d("response", t.toString());
+                    }
+                });
             }
         });
 

@@ -11,11 +11,10 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="215dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:src="@drawable/logo"
-      />
+        android:src="@drawable/logo" />
     <LinearLayout
         android:layout_width="314dp"
         android:layout_height="33dp"
@@ -86,6 +85,42 @@
             android:text="Log in"
             android:textColor="@android:color/background_light" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60px"
+        android:layout_marginBottom="5px"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/googleButton"
+            android:layout_width="324dp"
+            android:layout_weight=".5"
+            android:layout_height="50dp"
+            android:layout_marginRight="20px"
+            android:layout_gravity="right"
+            android:background="@drawable/circle_btn_facebook"
+            android:fontFamily="@font/ralewaymedium"
+            android:drawableRight="@drawable/facebook_logo"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Log in with"
+            android:textColor="@android:color/background_light" />
+        <Button
+            android:id="@+id/facebookButton"
+            android:layout_width="324dp"
+            android:layout_weight=".5"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20px"
+            android:layout_gravity="right"
+            android:background="@drawable/circle_btn_google"
+            android:fontFamily="@font/ralewaymedium"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:drawableRight="@drawable/google_logo"
+            android:text="Log in with"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -111,5 +146,13 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="You don't have an account? Register now!"/>
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/forgotPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="You don't remember your password?"/>
 </LinearLayout>
 

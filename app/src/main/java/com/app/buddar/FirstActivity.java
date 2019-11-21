@@ -36,8 +36,8 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
  * RF01 - Autenticacion de Usuario
  * Casos de uso que cumple esta pantalla:
  * . Inicio de sesion
- * . Inicio de sesion / Registro con Facebook
- * . Inicio de sesion / Registro con Google
+ * . Inicio de sesion - Registro con Facebook
+ * . Inicio de sesion - Registro con Google
  */
 public class FirstActivity extends AppCompatActivity implements View.OnClickListener, Callback<User> {
     private Button loginButton, googleButton, facebookButton;

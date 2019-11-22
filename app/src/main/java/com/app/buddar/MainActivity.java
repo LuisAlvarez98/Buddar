@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Splash
+     *
      * @param savedInstanceState
      */
     @Override

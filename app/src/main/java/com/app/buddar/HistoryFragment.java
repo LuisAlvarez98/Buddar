@@ -52,6 +52,7 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
 
     Api apiInterface = retrofit.create(Api.class);
     HistoryVerticalAdapter adapt;
+
     public HistoryFragment() {
     }
 
@@ -84,7 +85,6 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
         recyclerHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
 
-
         Call<String> call2 = apiInterface.getHistory();
         call2.enqueue(new Callback<String>() {
             @Override
@@ -93,29 +93,29 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
                     case 200:
 
                         try {
-                            ArrayList<History>histories = new ArrayList<History>();
+                            ArrayList<History> histories = new ArrayList<History>();
                             JSONObject jsonObject = new JSONObject(response.body());
-                            JSONObject parsedJson = new JSONObject( jsonObject.get("history").toString());
-                            JSONArray historyJson = new JSONArray( parsedJson.get("history").toString());
+                            JSONObject parsedJson = new JSONObject(jsonObject.get("history").toString());
+                            JSONArray historyJson = new JSONArray(parsedJson.get("history").toString());
 
-                                int len = historyJson.length();
-                                for (int i=0;i<len;i++){
-                                    History history = new History();
-                                    JSONObject json = new JSONObject(historyJson.get(i).toString());
-                                    JSONObject user = new JSONObject(json.get("user").toString());
+                            int len = historyJson.length();
+                            for (int i = 0; i < len; i++) {
+                                History history = new History();
+                                JSONObject json = new JSONObject(historyJson.get(i).toString());
+                                JSONObject user = new JSONObject(json.get("user").toString());
 
-                                    history.setName(user.getString("name"));
-                                    history.setBio(user.getString("bio"));
-                                    Log.d("BIUO", user.getString("bio"));
-                                    history.setPicture(user.getString("picture"));
-                                    histories.add(history);
+                                history.setName(user.getString("name"));
+                                history.setBio(user.getString("bio"));
+                                Log.d("BIUO", user.getString("bio"));
+                                history.setPicture(user.getString("picture"));
+                                histories.add(history);
 
-                                }
+                            }
                             adapt = new HistoryVerticalAdapter(histories);
                             recyclerHistory.setNestedScrollingEnabled(false);
                             recyclerHistory.setAdapter(adapt);
 
-                        }catch (JSONException err){
+                        } catch (JSONException err) {
                             Log.d("Error", err.toString());
                         }
                         break;

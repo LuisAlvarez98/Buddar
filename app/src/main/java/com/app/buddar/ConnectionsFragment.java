@@ -51,6 +51,7 @@ public class ConnectionsFragment extends Fragment implements View.OnClickListene
 
     Api apiInterface = retrofit.create(Api.class);
     ConnectionsVerticalAdapter adapt;
+
     public ConnectionsFragment() {
     }
 
@@ -89,13 +90,13 @@ public class ConnectionsFragment extends Fragment implements View.OnClickListene
                     case 200:
 
                         try {
-                            ArrayList<Connection>connections = new ArrayList<Connection>();
+                            ArrayList<Connection> connections = new ArrayList<Connection>();
                             JSONObject jsonObject = new JSONObject(response.body());
-                            JSONObject parsedJson = new JSONObject( jsonObject.get("connections").toString());
-                            JSONArray historyJson = new JSONArray( parsedJson.get("connections").toString());
+                            JSONObject parsedJson = new JSONObject(jsonObject.get("connections").toString());
+                            JSONArray historyJson = new JSONArray(parsedJson.get("connections").toString());
 
                             int len = historyJson.length();
-                            for (int i=0;i<len;i++){
+                            for (int i = 0; i < len; i++) {
                                 Connection connection = new Connection();
                                 JSONObject json = new JSONObject(historyJson.get(i).toString());
                                 JSONObject user = new JSONObject(json.get("user").toString());
@@ -112,7 +113,7 @@ public class ConnectionsFragment extends Fragment implements View.OnClickListene
                             recylerConnections.setNestedScrollingEnabled(false);
                             recylerConnections.setAdapter(adapt);
 
-                        }catch (JSONException err){
+                        } catch (JSONException err) {
                             Log.d("Error", err.toString());
                         }
                         break;
@@ -126,7 +127,7 @@ public class ConnectionsFragment extends Fragment implements View.OnClickListene
         });
 
 
-        loaderContainer = (LinearLayout)view.findViewById(R.id.loaderContainer);
+        loaderContainer = (LinearLayout) view.findViewById(R.id.loaderContainer);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

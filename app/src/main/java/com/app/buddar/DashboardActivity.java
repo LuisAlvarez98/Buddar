@@ -35,7 +35,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     //nav
     private Toolbar toolbar;
     private DrawerLayout menu;
-    private ImageView hamb_button, eventosButton;
+    private ImageView hamb_button, notificationButton;
     private LinearLayout cart_button;
     private NavigationView nav_view;
     private LinearLayout logoutButton;
@@ -75,8 +75,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         home_button = (ImageView) findViewById(R.id.home_button);
         home_button.setOnClickListener(this);
         //Eventos button
-        eventosButton = (ImageView) findViewById(R.id.eventosButton);
-        eventosButton.setOnClickListener(this);
+        notificationButton = (ImageView) findViewById(R.id.notificationButton);
+        notificationButton.setOnClickListener(this);
         //Logout button
         logoutButton = (LinearLayout) findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(this);
@@ -146,6 +146,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.hamb_button:
                 menu.openDrawer(Gravity.START);
+                break;
+            case R.id.notificationButton:
+                Intent loggedIn = new Intent(DashboardActivity.this, NotificationActivity.class);
+                startActivity(loggedIn);
                 break;
             case R.id.logoutButton:
                 Log.d("log", "logout");

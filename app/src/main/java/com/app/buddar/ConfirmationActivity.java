@@ -18,11 +18,12 @@ import static com.app.buddar.DashboardFragment.interests;
 public class ConfirmationActivity extends AppCompatActivity {
     private ImageView back_button;
     private Button continueButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
-        continueButton = (Button)findViewById(R.id.continueButton);
+        continueButton = (Button) findViewById(R.id.continueButton);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,7 +33,7 @@ public class ConfirmationActivity extends AppCompatActivity {
             }
         });
 
-        back_button = (ImageView)findViewById(R.id.back_button);
+        back_button = (ImageView) findViewById(R.id.back_button);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

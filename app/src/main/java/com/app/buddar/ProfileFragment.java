@@ -15,8 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.app.buddar.objects.Profile;
-import com.app.buddar.objects.User;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;

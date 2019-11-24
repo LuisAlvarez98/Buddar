@@ -55,7 +55,6 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
  * . Visualizar perfil de conexion reciente
  */
 public class DashboardFragment extends Fragment implements View.OnClickListener {
-    ImageButton misProductos, eventosEnCurso, solicitudesDeEventos, historialDeEventos, miPerfil;
     ProfileFragment profileFragment;
     private LinearLayout loaderContainer;
     private RecyclerView recyclerChat, recyclerInfo;
@@ -221,14 +220,4 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         }
     }
 
-    /**
-     * Sets the fragment
-     *
-     * @param fragment
-     */
-    private void setFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, fragment);
-        fragmentTransaction.commit();
-    }
 }

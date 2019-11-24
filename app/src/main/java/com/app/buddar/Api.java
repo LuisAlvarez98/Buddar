@@ -1,13 +1,6 @@
 package com.app.buddar;
 
-import com.app.buddar.objects.FAQ;
-import com.app.buddar.objects.History;
-import com.app.buddar.objects.Login;
 import com.app.buddar.objects.Match;
-import com.app.buddar.objects.Profile;
-import com.app.buddar.objects.User;
-
-import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

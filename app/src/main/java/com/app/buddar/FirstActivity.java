@@ -13,9 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.app.buddar.objects.Login;
-import com.app.buddar.objects.Profile;
-import com.app.buddar.objects.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,12 +36,10 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
  * . Inicio de sesion / Registro con Facebook
  * . Inicio de sesion / Registro con Google
  */
-public class FirstActivity extends AppCompatActivity implements View.OnClickListener, Callback<User> {
+public class FirstActivity extends AppCompatActivity implements View.OnClickListener{
     private Button loginButton, googleButton, facebookButton;
     private EditText emailInput, passwordInput;
     private String username, password;
-    public static SharedPreferences pref;
-
     private TextView registerButton, forgotPassword;
     //Progress
     ProgressBar progressLogin;
@@ -90,11 +85,6 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         progressLogin = (ProgressBar) findViewById(R.id.progressLogin);
         progressLogin.setVisibility(View.GONE);
 
-        pref = getSharedPreferences("user_details", MODE_PRIVATE);
-        if (pref.contains("token")) {
-            Intent loggedIn = new Intent(FirstActivity.this, DashboardActivity.class);
-            startActivity(loggedIn);
-        }
     }
 
     /**
@@ -182,27 +172,5 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    /**
-     * @param call
-     * @param response
-     */
-    @Override
-    public void onResponse(Call<User> call, Response<User> response) {
-        if (response.isSuccessful()) {
-            Intent loginIntent = new Intent(FirstActivity.this, DashboardActivity.class);
-            startActivity(loginIntent);
-        }
-        Toast.makeText(getApplicationContext(), "Login", Toast.LENGTH_SHORT).show();
-    }
 
-    /**
-     * onFailure method
-     *
-     * @param call
-     * @param t
-     */
-    @Override
-    public void onFailure(Call<User> call, Throwable t) {
-        Toast.makeText(getApplicationContext(), "Didn't work", Toast.LENGTH_SHORT).show();
-    }
 }

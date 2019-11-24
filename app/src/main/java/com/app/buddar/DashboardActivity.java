@@ -24,7 +24,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-import static com.app.buddar.FirstActivity.pref;
 import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
 
 /**
@@ -36,7 +35,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private Toolbar toolbar;
     private DrawerLayout menu;
     private ImageView hamb_button, notificationButton;
-    private LinearLayout cart_button;
     private NavigationView nav_view;
     private LinearLayout logoutButton;
     private ImageView home_button;
@@ -49,15 +47,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     ConnectionsFragment connectionsFragment;
     HistoryFragment historyFragment;
     HelpFragment helpFragment;
-
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(Api.BASE_URL)
-            .client(getUnsafeOkHttpClient().build())
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build();
-
-    Api apiInterface = retrofit.create(Api.class);
 
     /**
      * onCreate method
@@ -153,9 +142,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.logoutButton:
                 Log.d("log", "logout");
-                SharedPreferences.Editor editor = pref.edit();
-                editor.clear();
-                editor.commit();
                 Intent logout = new Intent(DashboardActivity.this, FirstActivity.class);
                 startActivity(logout);
                 finish();

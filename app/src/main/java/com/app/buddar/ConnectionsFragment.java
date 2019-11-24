@@ -38,7 +38,7 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
  * ConnectionsFragment
  * Displays all the connections of the user
  */
-public class ConnectionsFragment extends Fragment implements View.OnClickListener {
+public class ConnectionsFragment extends Fragment {
     private LinearLayout loaderContainer;
 
     private RecyclerView recylerConnections;
@@ -136,16 +136,5 @@ public class ConnectionsFragment extends Fragment implements View.OnClickListene
                 loaderContainer.setVisibility(View.GONE);
             }
         }, 1000);
-    }
-
-    /**
-     * onClick method
-     *
-     * @param view
-     */
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-        }
     }
 }

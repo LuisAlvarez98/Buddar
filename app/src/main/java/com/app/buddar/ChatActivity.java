@@ -31,7 +31,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class ChatActivity extends AppCompatActivity {
     private ImageView back_button;
-    private Button continueButton;
 
     //Recycler Interest
     private Button addInterest;

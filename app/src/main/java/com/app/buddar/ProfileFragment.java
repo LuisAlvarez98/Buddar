@@ -44,7 +44,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private Button submitButton, changePasswordButton;
     private LinearLayout loaderContainer;
     private TextView title;
-    public static String userName, userPicture, userEmail, userBio;
     //Retrofit init
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(Api.BASE_URL)

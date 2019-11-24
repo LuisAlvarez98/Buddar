@@ -139,6 +139,4 @@ public class HistoryFragment extends Fragment{
             }
         }, 1000);
     }
-
-
 }

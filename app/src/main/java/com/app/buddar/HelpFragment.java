@@ -42,7 +42,7 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
  * Casos de uso que cumple esta pantalla:
  * . FAQ
  */
-public class HelpFragment extends Fragment implements View.OnClickListener {
+public class HelpFragment extends Fragment {
     private LinearLayout loaderContainer;
     private RecyclerView recyclerFAQ;
     Retrofit retrofit = new Retrofit.Builder()
@@ -137,16 +137,5 @@ public class HelpFragment extends Fragment implements View.OnClickListener {
                 loaderContainer.setVisibility(View.GONE);
             }
         }, 1000);
-    }
-
-    /**
-     * onClick method
-     *
-     * @param view
-     */
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-        }
     }
 }

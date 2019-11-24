@@ -102,6 +102,5 @@ public class HistoryVerticalAdapter extends RecyclerView.Adapter<HistoryVertical
             profileImage = (CircleImageView) itemView.findViewById(R.id.profileImage);
             item = (LinearLayout)itemView.findViewById(R.id.item);
         }
-
     }
 }

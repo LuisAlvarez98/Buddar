@@ -13,13 +13,6 @@ public class InfoItem {
     public InfoItem() {
     }
 
-    public InfoItem(String name, String email, String picture, String bio) {
-        this.name = name;
-        this.email = email;
-        this.picture = picture;
-        this.bio = bio;
-    }
-
     public String getName() {
         return name;
     }

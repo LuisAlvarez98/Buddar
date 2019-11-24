@@ -14,13 +14,6 @@ public class Connection {
 
     }
 
-    public Connection(String name, String bio, String picture, String email) {
-        this.name = name;
-        this.bio = bio;
-        this.picture = picture;
-        this.email = email;
-    }
-
     public String getPicture() {
         return picture;
     }

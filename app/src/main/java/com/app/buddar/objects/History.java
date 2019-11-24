@@ -13,12 +13,6 @@ public class History {
     public History() {
     }
 
-    public History(String name, String email, String picture, String bio) {
-        this.name = name;
-        this.email = email;
-        this.picture = picture;
-        this.bio = bio;
-    }
 
     public String getName() {
         return name;

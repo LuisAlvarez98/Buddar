@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class DetailUserActivity extends AppCompatActivity {
     private ImageView back_button;
     private TextView email, name, bio;
     private ImageView profileImage;
+    private Button sendMessageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class DetailUserActivity extends AppCompatActivity {
 
         //Get items from intent;
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         if (intent != null) {
             name.setText(intent.getStringExtra("name"));
             bio.setText(intent.getStringExtra("bio"));
@@ -57,6 +59,15 @@ public class DetailUserActivity extends AppCompatActivity {
                     .centerCrop().into(profileImage);
         }
 
-
+        sendMessageButton = (Button)findViewById(R.id.sendMessageButton);
+        sendMessageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent infoIntent = new Intent(view.getContext(), ChatActivity.class);
+                infoIntent.putExtra("name",intent.getStringExtra("name"));
+                infoIntent.putExtra("picture",intent.getStringExtra("picture"));
+                view.getContext().startActivity(infoIntent);
+            }
+        });
     }
 }

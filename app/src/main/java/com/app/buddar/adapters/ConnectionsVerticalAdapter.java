@@ -1,12 +1,15 @@
 package com.app.buddar.adapters;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.app.buddar.DetailUserActivity;
 import com.app.buddar.R;
 import com.app.buddar.objects.Connection;
 import com.app.buddar.objects.History;
@@ -52,6 +55,20 @@ public class ConnectionsVerticalAdapter extends RecyclerView.Adapter<Connections
         holder.name.setText(listDatos.get(position).getName());
         holder.bio.setText(listDatos.get(position).getBio());
         Picasso.get().load(listDatos.get(position).getPicture()).into(holder.profileImage);
+        holder.item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent infoIntent = new Intent(view.getContext(), DetailUserActivity.class);
+                infoIntent.putExtra("name",listDatos.get(position).getName());
+                infoIntent.putExtra("email",listDatos.get(position).getEmail());
+                infoIntent.putExtra("picture",listDatos.get(position).getPicture());
+                infoIntent.putExtra("bio",listDatos.get(position).getBio());
+
+                view.getContext().startActivity(infoIntent);
+
+
+            }
+        });
     }
 
     /**
@@ -76,12 +93,13 @@ public class ConnectionsVerticalAdapter extends RecyclerView.Adapter<Connections
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
         TextView name,bio;
         CircleImageView profileImage;
-
+        LinearLayout item;
         public ViewHolderDatos(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.name);
             bio = (TextView)itemView.findViewById(R.id.bio);
             profileImage = (CircleImageView) itemView.findViewById(R.id.profileImage);
+            item = (LinearLayout)itemView.findViewById(R.id.item);
         }
 
     }

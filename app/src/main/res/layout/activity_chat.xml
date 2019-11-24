@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:hint="Message"/>
         <Button
-            android:id="@+id/sendMessage"
+            android:id="@+id/sendMessageButton"
             android:layout_width="50dp"
             android:text=">"
             android:textSize="20sp"

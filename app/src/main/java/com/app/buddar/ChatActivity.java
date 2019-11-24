@@ -13,10 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.buddar.adapters.ChatVerticalList;
-import com.app.buddar.adapters.InterestVerticalList;
 import com.squareup.picasso.Picasso;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -69,7 +66,7 @@ public class ChatActivity extends AppCompatActivity {
         }
 
         //definition of components
-        addInterest = (Button) findViewById(R.id.sendMessage);
+        addInterest = (Button) findViewById(R.id.sendMessageButton);
         recyclerMessages = (RecyclerView) findViewById(R.id.recyclerMessages);
         chatInput = (EditText) findViewById(R.id.message);
         recyclerMessages.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));

@@ -39,7 +39,7 @@ import static com.app.buddar.util.RestAdapter.getUnsafeOkHttpClient;
  * History Fragment
  * Created by Luis F. Alvarez
  */
-public class HistoryFragment extends Fragment implements View.OnClickListener {
+public class HistoryFragment extends Fragment{
     private RecyclerView recyclerHistory;
     private LinearLayout loaderContainer;
     //Retrofit init
@@ -140,14 +140,5 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
         }, 1000);
     }
 
-    /**
-     * onClick method
-     *
-     * @param view
-     */
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-        }
-    }
+
 }

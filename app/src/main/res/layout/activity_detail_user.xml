@@ -64,7 +64,7 @@
                 />
 
             <Button
-                android:id="@+id/sendMessage"
+                android:id="@+id/sendMessageButton"
                 android:layout_width="324dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
